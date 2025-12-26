@@ -1,0 +1,56 @@
+; Pip-Boy Screen Effects - Stentorious
+
+; On game load
+AuxTimerStop "*PipScreen_Water"
+CallAfterFrames 2 (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")
+
+; On game restart
+if Goo1.AuxVarGetFlt "*PipScreen_Init" == 1
+	return
+endif
+Goo1.AuxVarSetFlt "*PipScreen_Init" 1
+
+; Check for requirements
+if GetNVSEVersionFull < 6.40
+	MessageBoxEx "Pip-Boy Screen Effects missing requirement!%rInstall xNVSE 6.4.0+."
+	return
+endif
+if GetPluginVersion "JohnnyGuitarNVSE" < 390
+	MessageBoxEx "Pip-Boy Screen Effects missing requirement!%rInstall latest JohnnyGuitar NVSE plugin."
+	return
+endif
+if GetPluginVersion "ShowOffNVSE Plugin" < 145
+	MessageBoxEx "Pip-Boy Screen Effects missing requirement!%rInstall latest ShowOff NVSE plugin."
+	return
+endif
+
+; Load INI settings
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bBlood" "Stentorious\PipBoyScreenEffects.ini" 1) 0
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bCrack" "Stentorious\PipBoyScreenEffects.ini" 1) 1
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bWater" "Stentorious\PipBoyScreenEffects.ini" 1) 2
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bDust" "Stentorious\PipBoyScreenEffects.ini" 1) 3
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fHealthThreshold" "Stentorious\PipBoyScreenEffects.ini" 50) 4
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fArmorConditionThreshold" "Stentorious\PipBoyScreenEffects.ini" 30) 5
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fWetnessDuration" "Stentorious\PipBoyScreenEffects.ini" 15) 6
+CloseFileSO "Stentorious\PipBoyScreenEffects.ini" 0
+
+; Sandstorms support
+AssignKeyword HVDustStorm "WeatherSandstorm"
+if eval IsModLoaded "Desert Natural Sandstorms.esp" || IsModLoaded "Desert Natural Sandstorms TTW.esp"
+	AssignKeyword (EditorIDToFormID "SandstormWeather") "WeatherSandstorm"
+	AssignKeyword (EditorIDToFormID "SandstormWeather2") "WeatherSandstorm"
+endif
+if eval IsModLoaded "SSTAtmospheresWeather.esp"
+	AssignKeyword (EditorIDToFormID "SSTNVWastelandSandstorm") "WeatherSandstorm"
+endif
+
+; Update events
+SGMLC (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1 60 1
+SetEventHandler "OnEquip" ({ref rEquipper, ref rEquipped} => CallAfterFrames 0 (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1) "first"::Player
+SetEventHandler "OnUnequip" ({ref rEquipper, ref rEquipped} => CallAfterFrames 0 (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1) "first"::Player
+SetOnControlDownEventHandler ({int iControlID} => Call (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")) 1 14
+SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => Call (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")) 0 16
+SetOnFastTravelEventHandler (begin Function {ref rMapMarker}
+	AuxTimerStop "*PipScreen_Water"
+	Call (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")
+end) 1

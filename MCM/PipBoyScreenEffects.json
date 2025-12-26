@@ -1,0 +1,105 @@
+{
+	"modName": "PipBoyScreenEffects",
+	"displayName": "$modDisplayName",
+	"description": "$modDescription",
+	"saveFile": "Stentorious/PipBoyScreenEffects.ini",
+	"minMCMVersion": 1.00,
+	"minModVersion": 1.00,
+	"requirements": [
+		{ "type": "file", "file": "NVSE/plugins/scripts/ln_PipBoyScreenEffects.txt" }
+	],
+	"submenus": {
+		"0": {
+			"listTitle": "$modDisplayName",
+			"pageTitle": "$modDisplayName",
+			"active": 1,
+			"columns": 2,
+			"enable": 1,
+			"options": {
+				"1": {
+					"title": "$ScreenEffects",
+					"enable": 1,
+					"type": 0
+				},
+				"3": {
+					"title": "$EffectBlood",
+					"enable": 1,
+					"type": 5,
+					"mouse": "$EffectBloodMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 0, "configINI": "Effects:bBlood", "default": 1 } ]
+				},
+				"5": {
+					"title": "$EffectCrack",
+					"enable": 1,
+					"type": 5,
+					"mouse": "$EffectCrackMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 1, "configINI": "Effects:bCrack", "default": 1 } ]
+				},
+				"7": {
+					"title": "$EffectWater",
+					"enable": 1,
+					"type": 5,
+					"mouse": "$EffectWaterMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 2, "configINI": "Effects:bWater", "default": 1 } ]
+				},
+				"9": {
+					"title": "$EffectDust",
+					"enable": 1,
+					"type": 5,
+					"mouse": "$EffectDustMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 3, "configINI": "Effects:bDust", "default": 1 } ]
+				},
+				"2": {
+					"title": "$Conditions",
+					"enable": 1,
+					"type": 0
+				},
+				"4": {
+					"title": "$HealthThreshold",
+					"type": 2,
+					"enable": 1,
+					"mouse": "$HealthThresholdMouse",
+					"suffix": "%",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 4, "configINI": "Conditions:fHealthThreshold", "default": 50 } ],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 1,
+						"valueMin": 0,
+						"valueMax": 100,
+						"suffix": "%"
+					}
+				},
+				"6": {
+					"title": "$ArmorThreshold",
+					"type": 2,
+					"enable": 1,
+					"mouse": "$ArmorThresholdMouse",
+					"suffix": "%",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 5, "configINI": "Conditions:fArmorConditionThreshold", "default": 50 } ],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 1,
+						"valueMin": 0,
+						"valueMax": 100,
+						"suffix": "%"
+					}
+				},
+				"8": {
+					"title": "$WetnessDuration",
+					"type": 2,
+					"enable": 1,
+					"mouse": "$WetnessDurationMouse",
+					"suffix": "s",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 6, "configINI": "Conditions:fWetnessDuration", "default": 30 } ],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 1,
+						"valueMin": 0,
+						"valueMax": 100,
+						"suffix": "s"
+					}
+				}
+			}
+		}
+	}
+}
