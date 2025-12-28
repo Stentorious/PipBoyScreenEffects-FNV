@@ -7,8 +7,8 @@ float fValue
 Begin Function {sTimerName, rOwner, fTimeDelta}
 
 	; Update value
-	fValue = AuxTimerTimeLeft (sTimerName) / (Goo1.AuxVarGetFlt (sTimerName) 2)
-	if eval Goo1.AuxVarGetFlt (sTimerName) 3 > 0
+	fValue = AuxTimerTimeLeft (sTimerName) / (Goo1.AuxVarGetFlt (sTimerName) 5)
+	if eval Goo1.AuxVarGetFlt (sTimerName) 4 > 0
 		fValue = 1 - fValue
 	endif
 	Player.SetMatrPropVal (sTimerName) 7 fValue

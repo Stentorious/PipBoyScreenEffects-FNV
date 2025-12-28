@@ -10,11 +10,35 @@ Begin Function {}
 		return
 	endif
 
+	; Reset mesh
+	if eval Player.GetNifBlockFlag "*PipScreen:Water" 0 == 1
+		Player.SetNifBlockFlag "*PipScreen:Water" 0 0
+
+		; Update brightness
+		Player.SetMatrPropVal "*PipScreen:Blood" 8 (Goo1.AuxVarGetFlt "*PipScreen:Blood" 1)
+		Player.SetMatrPropVal "*PipScreen:Crack" 8 (Goo1.AuxVarGetFlt "*PipScreen:Crack" 1)
+		Player.SetMatrPropVal "*PipScreen:Water" 8 (Goo1.AuxVarGetFlt "*PipScreen:Water" 1)
+		Player.SetMatrPropVal "*PipScreen:Dust" 8 (Goo1.AuxVarGetFlt "*PipScreen:Dust" 1)
+
+		; Validate mesh
+		if eval ModelHasBlock Player "RadDummy01" && ModelHasBlock Player "GlassLight" == 0
+			Player.SetNifRot "ScreenEffectOverlay" 3.8 0.8 0
+			Player.SetNifTrans "ScreenEffectOverlay" -2.18 -0.22 0.55
+		endif
+
+		; Reset effect state
+		Goo1.AuxVarSetFlt "*PipScreen:Blood" 0 4
+		Goo1.AuxVarSetFlt "*PipScreen:Crack" 0 4
+		Goo1.AuxVarSetFlt "*PipScreen:Water" 0 4
+		Goo1.AuxVarSetFlt "*PipScreen:Dust" 0 4
+
+	endif
+
 	; Armor condition (Cracks)
 	if eval Goo1.AuxVarGetFlt "*PipScreen:Crack" 0
 
-		iStateCache = Goo1.AuxVarGetFlt "*PipScreen:Crack" 3
-		fArmorThreshold = (Goo1.AuxVarGetFlt "*PipScreen_INI" 1) / 100
+		iStateCache = Goo1.AuxVarGetFlt "*PipScreen:Crack" 4
+		fArmorThreshold = (Goo1.AuxVarGetFlt "*PipScreen:Crack" 3) / 100
 
 		; Check state
 		if eval IsReference (rArmor = Player.GetEquippedItemRef 2) && (fPlrArmor = rArmor.GetItemRefCurrentHealth 1) < fArmorThreshold
@@ -24,12 +48,12 @@ Begin Function {}
 			if eval iStateTemp != iStateCache
 				SwapTextureEx Player "*PipScreen:Crack" (sv_Construct "PipBoyScreenEffects\crack_%g" iStateTemp) 0
 				Player.SetMatrPropVal "*PipScreen:Crack" 7 1
-				Goo1.AuxVarSetFlt "*PipScreen:Crack" iStateTemp 3
+				Goo1.AuxVarSetFlt "*PipScreen:Crack" iStateTemp 4
 			endif
 
 		elseif eval iStateTemp != iStateCache
 			Player.SetMatrPropVal "*PipScreen:Crack" 7 0
-			Goo1.AuxVarSetFlt "*PipScreen:Crack" iStateTemp 3
+			Goo1.AuxVarSetFlt "*PipScreen:Crack" iStateTemp 4
 		endif
 
 	endif

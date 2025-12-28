@@ -1,0 +1,32 @@
+ref rOwner
+string_var sTimerName
+
+int iStateWater
+float fHealthThreshold
+float fPlrHealth
+float fTimer
+
+Begin Function {sTimerName, rOwner}
+
+	sv_Destruct sTimerName
+
+	fHealthThreshold = (Goo1.AuxVarGetFlt "*PipScreen:Blood" 3) / 100
+	if eval (fPlrHealth = Player.GetHealthPercentage) >= fHealthThreshold
+		return
+	endif
+
+	SwapTextureEx Player "*PipScreen:Blood" (sv_Construct "PipBoyScreenEffects\blood_%g" (4 - (Flr (fPlrHealth / (fHealthThreshold / 4))))) 0
+	Player.SetMatrPropVal "*PipScreen:Blood" 7 1
+
+	if eval (iStateWater = Goo1.AuxVarGetFlt "*PipScreen:Water" 4)
+		fTimer = Goo1.AuxVarGetFlt "*PipScreen:Water" 3
+		if eval iStateWater == 2
+			fTimer /= 2
+		endif
+	else
+		fTimer = Goo1.AuxVarGetFlt "*PipScreen:Blood" 2
+	endif
+	Goo1.AuxVarSetFlt "*PipScreen:Blood" fTimer 5
+	AuxTimerStart "*PipScreen:Blood" fTimer 399
+
+end

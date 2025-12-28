@@ -7,7 +7,7 @@ float fAlpha
 Begin Function {sTimerName, iEffectState}
 
 	; Update state
-	Goo1.AuxVarSetFlt (sTimerName) iEffectState 3
+	Goo1.AuxVarSetFlt (sTimerName) iEffectState 4
 
 	fAlpha = Player.GetMatrPropVal (sTimerName) 7
 
@@ -33,8 +33,8 @@ Begin Function {sTimerName, iEffectState}
 	endif
 
 	; Start timer
-	fAlpha *= Goo1.AuxVarGetFlt (sTimerName) 2
-	AuxTimerStart (sTimerName) fAlpha 271
+	fAlpha *= Goo1.AuxVarGetFlt (sTimerName) 5
+	AuxTimerStart (sTimerName) fAlpha 399
 
 	sv_Destruct sTimerName
 

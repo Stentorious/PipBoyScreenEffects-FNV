@@ -1,0 +1,12 @@
+; Pip-Boy support
+AttachModel PipBoy 3 "glare|PipBoyScreenEffects\Default.nif"
+AttachModel PimpBoy 3 "glare|PipBoyScreenEffects\Default.nif"
+if eval IsFormValid (ref rPipBoy = EditorIDToFormID "PipBoy2000")
+	AttachModel rPipBoy 3 "glare|PipBoyScreenEffects\Default.nif"
+endif
+if eval IsFormValid (rPipBoy = EditorIDToFormID "PipBoy2000Mk6MC")
+	AttachModel rPipBoy 3 "glare|PipBoyScreenEffects\Default.nif"
+endif
+if eval IsFormValid (rPipBoy = EditorIDToFormID "BIDEpipReadius")
+	AttachModel rPipBoy 3 "glare|PipBoyScreenEffects\2500.nif"
+endif
