@@ -21,6 +21,10 @@ Begin Function {}
 	; Validate mesh
 	if eval Goo1.AuxVarGetFlt "*PipScreen_INI" 2 == 0 && ModelHasBlock Player "ScreenEffectOverlay" == 0
 		AttachModel Player 3 "glare|PipBoyScreenEffects\Default.nif"
+		if eval ModelHasBlock Player "RadDummy01" && ModelHasBlock Player "GlassLight" == 0
+			Player.SetNifRot "ScreenEffectOverlay" 3.8 0.8 0
+			Player.SetNifTrans "ScreenEffectOverlay" -2.18 -0.22 0.55
+		endif
 	endif
 
 	; Armor condition (Cracks)
