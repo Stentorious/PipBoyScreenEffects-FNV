@@ -22,45 +22,109 @@
 					"type": 0
 				},
 				"3": {
-					"title": "$EffectBlood",
+					"title": "$Blood",
 					"enable": 1,
 					"type": 5,
-					"mouse": "$EffectBloodMouse",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 0, "configINI": "Effects:bBlood", "default": 1 } ]
+					"mouse": "$BloodMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Blood", "key": 0, "configINI": "Effects:bBlood", "default": 1 } ]
+				},
+				"4": {
+					"title": "$BloodBrightness",
+					"state": { "form": "Goo1", "auxVar": "*PipScreen:Blood", "key": 0, "value": 1, "disable": 1 },
+					"type": 2.5,
+					"mouse": "$BloodBrightnessMouse",
+					"suffix": "x",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Blood", "key": 1, "configINI": "Effects:fBloodBrightness", "default": 1 } ],
+					"scale": {
+						"valueDecimal": 1,
+						"valueIncrement": 0.1,
+						"valueMin": 0.5,
+						"valueMax": 5,
+						"suffix": "x"
+					},
+					"call": { "type": "file", "value": "PipBoyScreenEffects/MCMExtender/UpdateOption.gek" }
 				},
 				"5": {
-					"title": "$EffectCrack",
+					"title": "$Crack",
 					"enable": 1,
 					"type": 5,
-					"mouse": "$EffectCrackMouse",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 1, "configINI": "Effects:bCrack", "default": 1 } ]
+					"mouse": "$CrackMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Crack", "key": 0, "configINI": "Effects:bCrack", "default": 1 } ]
+				},
+				"6": {
+					"title": "$CrackBrightness",
+					"state": { "form": "Goo1", "auxVar": "*PipScreen:Crack", "key": 0, "value": 1, "disable": 1 },
+					"type": 2.5,
+					"mouse": "$CrackBrightnessMouse",
+					"suffix": "x",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Crack", "key": 1, "configINI": "Effects:fCrackBrightness", "default": 1 } ],
+					"scale": {
+						"valueDecimal": 1,
+						"valueIncrement": 0.1,
+						"valueMin": 0.5,
+						"valueMax": 5,
+						"suffix": "x"
+					},
+					"call": { "type": "file", "value": "PipBoyScreenEffects/MCMExtender/UpdateOption.gek" }
 				},
 				"7": {
-					"title": "$EffectWater",
+					"title": "$Water",
 					"enable": 1,
 					"type": 5,
-					"mouse": "$EffectWaterMouse",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 2, "configINI": "Effects:bWater", "default": 1 } ]
+					"mouse": "$WaterMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Water", "key": 0, "configINI": "Effects:bWater", "default": 1 } ]
+				},
+				"8": {
+					"title": "$WaterBrightness",
+					"state": { "form": "Goo1", "auxVar": "*PipScreen:Water", "key": 0, "value": 1, "disable": 1 },
+					"type": 2.5,
+					"mouse": "$WaterBrightnessMouse",
+					"suffix": "x",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Water", "key": 1, "configINI": "Effects:fWaterBrightness", "default": 1 } ],
+					"scale": {
+						"valueDecimal": 1,
+						"valueIncrement": 0.1,
+						"valueMin": 0.5,
+						"valueMax": 5,
+						"suffix": "x"
+					},
+					"call": { "type": "file", "value": "PipBoyScreenEffects/MCMExtender/UpdateOption.gek" }
 				},
 				"9": {
-					"title": "$EffectDust",
+					"title": "$Dust",
 					"enable": 1,
 					"type": 5,
-					"mouse": "$EffectDustMouse",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 3, "configINI": "Effects:bDust", "default": 1 } ]
+					"mouse": "$DustMouse",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Dust", "key": 0, "configINI": "Effects:bDust", "default": 1 } ]
 				},
-				"2": {
+				"10": {
+					"title": "$DustBrightness",
+					"state": { "form": "Goo1", "auxVar": "*PipScreen:Dust", "key": 0, "value": 1, "disable": 1 },
+					"type": 2.5,
+					"mouse": "$DustBrightnessMouse",
+					"suffix": "x",
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen:Dust", "key": 1, "configINI": "Effects:fDustBrightness", "default": 1 } ],
+					"scale": {
+						"valueDecimal": 1,
+						"valueIncrement": 0.1,
+						"valueMin": 0.5,
+						"valueMax": 5,
+						"suffix": "x"
+					},
+					"call": { "type": "file", "value": "PipBoyScreenEffects/MCMExtender/UpdateOption.gek" }
+				},
+				"13": {
 					"title": "$Conditions",
 					"enable": 1,
 					"type": 0
 				},
-				"4": {
+				"15": {
 					"title": "$HealthThreshold",
 					"type": 2,
 					"enable": 1,
 					"mouse": "$HealthThresholdMouse",
 					"suffix": "%",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 4, "configINI": "Conditions:fHealthThreshold", "default": 50 } ],
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 0, "configINI": "Conditions:fHealthThreshold", "default": 80 } ],
 					"scale": {
 						"valueDecimal": 0,
 						"valueIncrement": 1,
@@ -69,34 +133,19 @@
 						"suffix": "%"
 					}
 				},
-				"6": {
+				"17": {
 					"title": "$ArmorThreshold",
 					"type": 2,
 					"enable": 1,
 					"mouse": "$ArmorThresholdMouse",
 					"suffix": "%",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 5, "configINI": "Conditions:fArmorConditionThreshold", "default": 50 } ],
+					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 1, "configINI": "Conditions:fArmorConditionThreshold", "default": 30 } ],
 					"scale": {
 						"valueDecimal": 0,
 						"valueIncrement": 1,
 						"valueMin": 0,
 						"valueMax": 100,
 						"suffix": "%"
-					}
-				},
-				"8": {
-					"title": "$WetnessDuration",
-					"type": 2,
-					"enable": 1,
-					"mouse": "$WetnessDurationMouse",
-					"suffix": "s",
-					"vars": [ { "form": "Goo1", "auxVar": "*PipScreen_INI", "key": 6, "configINI": "Conditions:fWetnessDuration", "default": 30 } ],
-					"scale": {
-						"valueDecimal": 0,
-						"valueIncrement": 1,
-						"valueMin": 0,
-						"valueMax": 100,
-						"suffix": "s"
 					}
 				}
 			}

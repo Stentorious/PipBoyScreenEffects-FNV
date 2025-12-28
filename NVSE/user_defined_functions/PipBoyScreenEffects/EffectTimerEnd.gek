@@ -1,0 +1,11 @@
+ref rOwner
+string_var sTimerName
+
+Begin Function {sTimerName, rOwner}
+
+	; Update value
+	Player.SetMatrPropVal (sTimerName) 7 (eval Goo1.AuxVarGetFlt (sTimerName) 3 > 0)
+
+	sv_Destruct sTimerName
+
+end

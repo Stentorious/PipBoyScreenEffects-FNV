@@ -1,0 +1,33 @@
+int iStateWater
+float fHealthThreshold
+float fPlrHealth
+float fTimer
+ref rTarget
+
+begin Function {}
+
+	if eval Goo1.AuxVarGetFlt "*PipScreen:Blood" 0 == 0 || IsReference (rTarget = This) == 0
+		return
+	endif
+
+	if eval rTarget.GetHitHealthDamage < 1
+		return
+	endif
+
+	fHealthThreshold = (Goo1.AuxVarGetFlt "*PipScreen_INI" 0) / 100
+	if eval (fPlrHealth = Player.GetHealthPercentage) < fHealthThreshold
+		SwapTextureEx Player "*PipScreen:Blood" (sv_Construct "PipBoyScreenEffects\blood_%g" (4 - (Flr (fPlrHealth / (fHealthThreshold / 4))))) 0
+		Player.SetMatrPropVal "*PipScreen:Blood" 7 1
+		iStateWater = Goo1.AuxVarGetFlt "*PipScreen:Water" 3
+		if eval iStateWater == 2
+			fTimer = 2
+		elseif eval iStateWater == 1
+			fTimer = 5
+		else
+			fTimer = 30
+		endif
+		Goo1.AuxVarSetFlt "*PipScreen:Blood" fTimer 2
+		AuxTimerStart "*PipScreen:Blood" fTimer 271
+	endif
+
+end

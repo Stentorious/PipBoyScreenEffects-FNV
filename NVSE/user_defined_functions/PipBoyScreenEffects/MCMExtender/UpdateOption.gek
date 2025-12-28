@@ -1,0 +1,30 @@
+float fValue
+int iMenu
+int iSubmenu
+int iOption
+array_var aJSON
+
+Begin Function {fValue, iMenu, iSubmenu, iOption, aJSON}
+
+	; Update brightness
+	if eval iOption == 4
+		if eval ModelHasBlock Player "*PipScreen:Blood"
+			Player.SetMatrPropVal "*PipScreen:Blood" 8 fValue
+		endif
+	elseif eval iOption == 6
+		if eval ModelHasBlock Player "*PipScreen:Crack"
+			Player.SetMatrPropVal "*PipScreen:Crack" 8 fValue
+		endif
+	elseif eval iOption == 8
+		if eval ModelHasBlock Player "*PipScreen:Water"
+			Player.SetMatrPropVal "*PipScreen:Water" 8 fValue
+		endif
+	elseif eval iOption == 10
+		if eval ModelHasBlock Player "*PipScreen:Dust"
+			Player.SetMatrPropVal "*PipScreen:Dust" 8 fValue
+		endif
+	endif
+
+	aJSON = ar_Null
+
+End

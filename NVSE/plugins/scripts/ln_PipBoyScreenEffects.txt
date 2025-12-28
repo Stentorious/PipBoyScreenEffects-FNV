@@ -1,8 +1,15 @@
 ; Pip-Boy Screen Effects - Stentorious
 
 ; On game load
-AuxTimerStop "*PipScreen_Water"
-CallAfterFrames 2 (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")
+SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Blood"
+SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Crack"
+SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Water"
+SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Dust"
+SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Blood"
+SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Crack"
+SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Water"
+SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Dust"
+CallAfterFrames 2 (CompileScript "PipBoyScreenEffects\UpdateTextureLoad.gek")
 
 ; On game restart
 if Goo1.AuxVarGetFlt "*PipScreen_Init" == 1
@@ -25,14 +32,33 @@ if GetPluginVersion "ShowOffNVSE Plugin" < 145
 endif
 
 ; Load INI settings
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bBlood" "Stentorious\PipBoyScreenEffects.ini" 1) 0
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bCrack" "Stentorious\PipBoyScreenEffects.ini" 1) 1
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bWater" "Stentorious\PipBoyScreenEffects.ini" 1) 2
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Effects:bDust" "Stentorious\PipBoyScreenEffects.ini" 1) 3
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fHealthThreshold" "Stentorious\PipBoyScreenEffects.ini" 50) 4
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fArmorConditionThreshold" "Stentorious\PipBoyScreenEffects.ini" 30) 5
-Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fWetnessDuration" "Stentorious\PipBoyScreenEffects.ini" 15) 6
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fHealthThreshold" "Stentorious\PipBoyScreenEffects.ini" 80) 0
+Goo1.AuxVarSetFlt "*PipScreen_INI" (GetINIFloat_Cached "Conditions:fArmorConditionThreshold" "Stentorious\PipBoyScreenEffects.ini" 30) 1
+
+; Load effects settings
+; "*PipScreen_Effect"
+; 0 : Toggle
+; 1 : Brightness
+; 2 : Fade time
+; 3 : General state (0 = Hidden, 1 = Visible, 2 = Fade in, 3 = Fade out)
+; 4 : Fade state (0 = Hidden, 1 = Visible, 2 = Fade in, 3 = Fade out)
+
+Goo1.AuxVarSetFlt "*PipScreen:Blood" (GetINIFloat_Cached "Effects:bBlood" "Stentorious\PipBoyScreenEffects.ini" 1) 0
+Goo1.AuxVarSetFlt "*PipScreen:Blood" (GetINIFloat_Cached "Effects:fBloodBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
+Goo1.AuxVarSetFlt "*PipScreen:Crack" (GetINIFloat_Cached "Effects:bCrack" "Stentorious\PipBoyScreenEffects.ini" 1) 0
+Goo1.AuxVarSetFlt "*PipScreen:Crack" (GetINIFloat_Cached "Effects:fCrackBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
+Goo1.AuxVarSetFlt "*PipScreen:Water" (GetINIFloat_Cached "Effects:bWater" "Stentorious\PipBoyScreenEffects.ini" 1) 0
+Goo1.AuxVarSetFlt "*PipScreen:Water" (GetINIFloat_Cached "Effects:fWaterBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
+
+Goo1.AuxVarSetFlt "*PipScreen:Dust" (GetINIFloat_Cached "Effects:bDust" "Stentorious\PipBoyScreenEffects.ini" 1) 0
+Goo1.AuxVarSetFlt "*PipScreen:Dust" (GetINIFloat_Cached "Effects:fDustBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
 CloseFileSO "Stentorious\PipBoyScreenEffects.ini" 0
+
+; Load default time settings
+Goo1.AuxVarSetFlt "*PipScreen:Blood" 30 2
+Goo1.AuxVarSetFlt "*PipScreen:Crack" 1 2
+Goo1.AuxVarSetFlt "*PipScreen:Water" 10 2
+Goo1.AuxVarSetFlt "*PipScreen:Dust" 30 2
 
 ; Sandstorms support
 AssignKeyword HVDustStorm "WeatherSandstorm"
@@ -44,13 +70,15 @@ if eval IsModLoaded "SSTAtmospheresWeather.esp"
 	AssignKeyword (EditorIDToFormID "SSTNVWastelandSandstorm") "WeatherSandstorm"
 endif
 
+; Pip-Boy support
+Goo1.AuxVarSetFlt "*PipScreen_INI" (eval IsModLoaded "pipboy2500_edisleado.esp") 2
+if eval Goo1.AuxVarGetFlt "*PipScreen_INI" 2
+	AttachModel (EditorIDToFormID "BIDEpipReadius") 3 "glare|PipBoyScreenEffects\2500.nif"
+endif
+
 ; Update events
-SGMLC (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1 60 1
-SetEventHandler "OnEquip" ({ref rEquipper, ref rEquipped} => CallAfterFrames 0 (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1) "first"::Player
-SetEventHandler "OnUnequip" ({ref rEquipper, ref rEquipped} => CallAfterFrames 0 (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1) "first"::Player
-SetOnControlDownEventHandler ({int iControlID} => Call (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")) 1 14
-SetOnActorValueChangeEventHandler 1 ({int iAVCode, float fPrevValue, float fNewValue} => Call (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")) 0 16
-SetOnFastTravelEventHandler (begin Function {ref rMapMarker}
-	AuxTimerStop "*PipScreen_Water"
-	Call (CompileScript "PipBoyScreenEffects\UpdateTexture.gek")
-end) 1
+SGMLC (CompileScript "PipBoyScreenEffects\UpdateTexture.gek") 1 60 3
+SetEventHandler "OnEquip" ({ref rEquipper, ref rEquipped} => CallAfterFrames 0 (CompileScript "PipBoyScreenEffects\UpdateEquip.gek") 1) "first"::Player
+SetEventHandler "OnUnequip" ({ref rEquipper, ref rEquipped} => CallAfterFrames 0 (CompileScript "PipBoyScreenEffects\UpdateEquip.gek") 1) "first"::Player
+SetOnHitEventHandler (CompileScript "PipBoyScreenEffects\OnHit.gek") 1 Player
+SetOnFastTravelEventHandler ({ref rMapMarker} => Call (CompileScript "PipBoyScreenEffects\UpdateTextureLoad.gek")) 1

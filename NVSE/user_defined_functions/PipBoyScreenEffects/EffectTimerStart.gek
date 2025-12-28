@@ -1,0 +1,41 @@
+int iEffectState
+string_var sTimerName
+
+float fTimer
+float fAlpha
+
+Begin Function {sTimerName, iEffectState}
+
+	; Update state
+	Goo1.AuxVarSetFlt (sTimerName) iEffectState 3
+
+	fAlpha = Player.GetMatrPropVal (sTimerName) 7
+
+	; Force full alpha
+	if eval iEffectState == 2
+		AuxTimerStop (sTimerName) 0
+		Player.SetMatrPropVal (sTimerName) 7 1
+		sv_Destruct sTimerName
+		return
+
+	; Fade in
+	elseif eval iEffectState
+		if eval fAlpha == 1
+			return
+		endif
+		fAlpha = 1 - fAlpha
+
+	; Fade out
+	else
+		if eval fAlpha == 0
+			return
+		endif
+	endif
+
+	; Start timer
+	fAlpha *= Goo1.AuxVarGetFlt (sTimerName) 2
+	AuxTimerStart (sTimerName) fAlpha 271
+
+	sv_Destruct sTimerName
+
+end
