@@ -46,25 +46,25 @@ Goo1.AuxVarSetFlt "*PipScreen:Blood" (GetINIFloat_Cached "Blood:fBrightness" "St
 Goo1.AuxVarSetFlt "*PipScreen:Blood" (GetINIFloat_Cached "Blood:fFadeTime" "Stentorious\PipBoyScreenEffects.ini" 30) 2
 Goo1.AuxVarSetFlt "*PipScreen:Blood" (GetINIFloat_Cached "Blood:fThreshold" "Stentorious\PipBoyScreenEffects.ini" 80) 3
 Goo1.AuxVarSetFlt "*PipScreen:Blood" 0 4
-Goo1.AuxVarSetFlt "*PipScreen:Blood" (Goo1.AuxVarGetFlt "*PipScreen:Blood" 3) 5
+Goo1.AuxVarSetFlt "*PipScreen:Blood" (Goo1.AuxVarGetFlt "*PipScreen:Blood" 2) 5
 Goo1.AuxVarSetFlt "*PipScreen:Water" (GetINIFloat_Cached "Water:bEnable" "Stentorious\PipBoyScreenEffects.ini" 1) 0
 Goo1.AuxVarSetFlt "*PipScreen:Water" (GetINIFloat_Cached "Water:fBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
 Goo1.AuxVarSetFlt "*PipScreen:Water" (GetINIFloat_Cached "Water:fFadeTime" "Stentorious\PipBoyScreenEffects.ini" 10) 2
 Goo1.AuxVarSetFlt "*PipScreen:Water" (GetINIFloat_Cached "Water:fWashTime" "Stentorious\PipBoyScreenEffects.ini" 5) 3
 Goo1.AuxVarSetFlt "*PipScreen:Water" 0 4
-Goo1.AuxVarSetFlt "*PipScreen:Water" (Goo1.AuxVarGetFlt "*PipScreen:Water" 3) 5
+Goo1.AuxVarSetFlt "*PipScreen:Water" (Goo1.AuxVarGetFlt "*PipScreen:Water" 2) 5
 Goo1.AuxVarSetFlt "*PipScreen:Crack" (GetINIFloat_Cached "Crack:bEnable" "Stentorious\PipBoyScreenEffects.ini" 1) 0
 Goo1.AuxVarSetFlt "*PipScreen:Crack" (GetINIFloat_Cached "Crack:fBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
 Goo1.AuxVarSetFlt "*PipScreen:Crack" 0 2
 Goo1.AuxVarSetFlt "*PipScreen:Crack" (GetINIFloat_Cached "Crack:fThreshold" "Stentorious\PipBoyScreenEffects.ini" 30) 3
 Goo1.AuxVarSetFlt "*PipScreen:Crack" 0 4
-Goo1.AuxVarSetFlt "*PipScreen:Crack" (Goo1.AuxVarGetFlt "*PipScreen:Crack" 3) 5
+Goo1.AuxVarSetFlt "*PipScreen:Crack" (Goo1.AuxVarGetFlt "*PipScreen:Crack" 2) 5
 Goo1.AuxVarSetFlt "*PipScreen:Dust" (GetINIFloat_Cached "Dust:bEnable" "Stentorious\PipBoyScreenEffects.ini" 1) 0
 Goo1.AuxVarSetFlt "*PipScreen:Dust" (GetINIFloat_Cached "Dust:fBrightness" "Stentorious\PipBoyScreenEffects.ini" 1) 1
 Goo1.AuxVarSetFlt "*PipScreen:Dust" (GetINIFloat_Cached "Dust:fFadeTime" "Stentorious\PipBoyScreenEffects.ini" 30) 2
 Goo1.AuxVarSetFlt "*PipScreen:Dust" 0 3
 Goo1.AuxVarSetFlt "*PipScreen:Dust" 0 4
-Goo1.AuxVarSetFlt "*PipScreen:Dust" (Goo1.AuxVarGetFlt "*PipScreen:Dust" 3) 5
+Goo1.AuxVarSetFlt "*PipScreen:Dust" (Goo1.AuxVarGetFlt "*PipScreen:Dust" 2) 5
 CloseFileSO "Stentorious\PipBoyScreenEffects.ini" 0
 
 ; Sandstorms support
