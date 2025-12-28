@@ -46,7 +46,7 @@ Begin Function {}
 
 	; Dust
 	if eval Goo1.AuxVarGetFlt "*PipScreen:Dust" 0
-		iStateTemp = (eval IsFormValid (rWeather = GetCurrentWeather) && HasKeyWord rWeather "WeatherSandstorm" && iStateWater == 0)
+		iStateTemp = (eval IsFormValid (rWeather = GetCurrentWeather) && HasKeyWord rWeather "WeatherSandstorm" && Player.IsInInterior == 0 && iStateWater == 0)
 		Goo1.AuxVarSetFlt "*PipScreen:Dust" iStateTemp 3
 		Player.SetMatrPropVal "*PipScreen:Dust" 7 iStateTemp
 	endif

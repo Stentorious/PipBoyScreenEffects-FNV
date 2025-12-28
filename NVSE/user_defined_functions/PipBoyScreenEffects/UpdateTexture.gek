@@ -95,7 +95,7 @@ Begin Function {}
 	; Dust
 	if eval Goo1.AuxVarGetFlt "*PipScreen:Dust" 0
 
-		iStateTemp = (eval IsFormValid (rWeather = GetCurrentWeather) && HasKeyWord rWeather "WeatherSandstorm" && iStateWater == 0)
+		iStateTemp = (eval IsFormValid (rWeather = GetCurrentWeather) && HasKeyWord rWeather "WeatherSandstorm" && Player.IsInInterior == 0 && iStateWater == 0)
 		if eval iStateTemp != Goo1.AuxVarGetFlt "*PipScreen:Dust" 3
 			Goo1.AuxVarSetFlt "*PipScreen:Dust" 30 2
 			Call (CompileScript "PipBoyScreenEffects\EffectTimerStart.gek") "*PipScreen:Dust" iStateTemp
