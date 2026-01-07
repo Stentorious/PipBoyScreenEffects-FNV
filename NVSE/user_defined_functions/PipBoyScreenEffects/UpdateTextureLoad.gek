@@ -6,6 +6,7 @@ float fHealthThreshold
 float fArmorThreshold
 ref rArmor
 ref rWeather
+array_var aTemp
 
 Begin Function {}
 
@@ -38,10 +39,15 @@ Begin Function {}
 		Player.SetMatrPropVal "*PipScreen:Dust" 8 (Goo1.AuxVarGetFlt "*PipScreen:Dust" 1)
 
 		; Validate mesh
+		aTemp = Player.GetNifTrans "glare"
 		if eval ModelHasBlock Player "RadDummy01" && ModelHasBlock Player "GlassLight" == 0
 			Player.SetNifRot "ScreenEffectOverlay" 3.8 0.8 0
 			Player.SetNifTrans "ScreenEffectOverlay" -2.18 -0.22 0.55
+		elseif eval aTemp[0] == 11.158665
+			Player.SetNifRot "ScreenEffectOverlay" 0 0 -6.5
+			Player.SetNifTrans "ScreenEffectOverlay" -0.2 0.11 -0.4
 		endif
+		aTemp = ar_Null
 
 		; Reset effect state
 		Goo1.AuxVarSetFlt "*PipScreen:Blood" 0 4
