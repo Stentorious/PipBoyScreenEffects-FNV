@@ -11,7 +11,12 @@ Begin Function {sTimerName, rOwner}
 	sv_Destruct sTimerName
 
 	fHealthThreshold = (Goo1.AuxVarGetFlt "*PipScreen:Blood" 3) / 100
-	if eval (fPlrHealth = Player.GetHealthPercentage) >= fHealthThreshold
+	if eval (fPlrHealth = Player.GetPermanentActorValue Health) > 0
+		fPlrHealth = GetMaxOf 0 ((Player.GetAV Health) / fPlrHealth)
+	else
+		fPlrHealth = 1.0
+	endif
+	if eval fPlrHealth >= fHealthThreshold
 		return
 	endif
 
