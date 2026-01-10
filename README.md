@@ -1,45 +1,30 @@
-# Realtime Pip-Boy Map
+# Pip-Boy Screen Effects
 <p align="left">
-	<img height="350px" src="https://staticdelivery.nexusmods.com/mods/130/images/92277/92277-1761345928-49360207.png">
+	<img height="350px" src="https://staticdelivery.nexusmods.com/mods/130/images/95296/95296-1766777239-2007954116.png">
 </p>
 
 ## Overview
-- Adds a feature rich realtime map to the Pip-Boy viewable at any time.
-- Dynamic icons indicating the position/status of NPCs, items, and interactables.
-- Swap between Local and World Map modes.
-- Dozens of configuration options to customize the map to your liking.
-- Supports the [Pip-Boy Holo Panel](https://www.nexusmods.com/newvegas/mods/86483) via the [Holo Panel Map](https://www.nexusmods.com/newvegas/mods/94922) addon.
-- See [Modern Minimap](https://www.nexusmods.com/newvegas/mods/90574) mod page for full map feature set overview.
+- Adds various dynamic conditional effects to the Pip-Boy screen.
+- Effects will smoothly transition between states and can have unique interactions with each other.
 
-### Bonus Features
-- View radiation level at a glance.
-- Map border displays player detection/combat status.
-
-### Controls
-- Keyboard: G
-- Controller: Grab + B
-- See [Modern Minimap](https://www.nexusmods.com/newvegas/mods/90574) mod page for full Keybind list.
+### Effects
+- Blood Splatters: Appear and slowly fade after being hurt.
+- Shattered Glass: Amount determined by the armor condition.
+- Wet Glass: Water accumulates while standing outside in the rain or after entering water.
+- Dusty Glass: Dust slowly accumulates while standing outside in a sandstorm.
 
 ## Configuration
 Configurable via [MCM Extender](https://www.nexusmods.com/newvegas/mods/93642):
-- Set key bind.
-- Toggle controller support.
-- Toggle scan lines.
-- Set screen brightness.
-- Set Depth of Field strength/distance
-- Set Pip-Boy screen refresh rate.
-- Force player to walk while looking at Pip-Boy.
-- Additional Map/Keybind configuration is handled via the Modern Minimap MCM.
+- Toggle effects individually.
+- Set effect brightness.
+- Health threshold when blood splatters will begin appearing.
+- Armor condition threshold when cracks will begin appearing.
 
 ## Requirements
-- [Modern Minimap](https://www.nexusmods.com/newvegas/mods/90574)
 - [xNVSE](https://www.nexusmods.com/newvegas/mods/67883)
 - [JIP LN NVSE](https://www.nexusmods.com/newvegas/mods/58277)
 - [JohnnyGuitar NVSE](https://www.nexusmods.com/newvegas/mods/66927)
 - [ShowOff xNVSE](https://www.nexusmods.com/newvegas/mods/72541)
-- [kNVSE](https://www.nexusmods.com/newvegas/mods/71336)
-- [User Interface Organizer](https://www.nexusmods.com/newvegas/mods/57174)
-- [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347)
 - [MCM Extender](https://www.nexusmods.com/newvegas/mods/93642)
 
 ## Installation
