@@ -1,15 +1,15 @@
 ; Pip-Boy Screen Effects - Stentorious
 
 ; On game load
-SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Blood"
-SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Crack"
-SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Water"
-SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Dust"
-SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Blood"
-SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Crack"
-SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Water"
-SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Dust"
-SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\HitTimerEnd.gek") "*PipScreen:Hit"
+Goo1.SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Blood"
+Goo1.SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Crack"
+Goo1.SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Water"
+Goo1.SetOnTimerUpdateHandler 1 (CompileScript "PipBoyScreenEffects\EffectEasing.gek") "*PipScreen:Dust"
+Goo1.SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Blood"
+Goo1.SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Crack"
+Goo1.SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Water"
+Goo1.SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\EffectTimerEnd.gek") "*PipScreen:Dust"
+Goo1.SetOnTimerStopHandler 1 (CompileScript "PipBoyScreenEffects\HitTimerEnd.gek") "*PipScreen:Hit"
 CallAfterFrames 2 (CompileScript "PipBoyScreenEffects\UpdateTextureLoad.gek")
 
 ; On game restart

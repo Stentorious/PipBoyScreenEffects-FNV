@@ -32,6 +32,6 @@ Begin Function {sTimerName, rOwner}
 		fTimer = Goo1.AuxVarGetFlt "*PipScreen:Blood" 2
 	endif
 	Goo1.AuxVarSetFlt "*PipScreen:Blood" fTimer 5
-	AuxTimerStart "*PipScreen:Blood" fTimer 399
+	Goo1.AuxTimerStart "*PipScreen:Blood" fTimer 399
 
 end

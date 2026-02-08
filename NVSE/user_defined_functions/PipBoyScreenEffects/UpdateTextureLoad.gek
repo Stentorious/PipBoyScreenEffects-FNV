@@ -19,10 +19,10 @@ Begin Function {}
 		endif
 	endif
 
-	AuxTimerStop "*PipScreen:Blood" 0
-	AuxTimerStop "*PipScreen:Crack" 0
-	AuxTimerStop "*PipScreen:Water" 0
-	AuxTimerStop "*PipScreen:Dust" 0
+	Goo1.AuxTimerStop "*PipScreen:Blood" 0
+	Goo1.AuxTimerStop "*PipScreen:Crack" 0
+	Goo1.AuxTimerStop "*PipScreen:Water" 0
+	Goo1.AuxTimerStop "*PipScreen:Dust" 0
 
 	if eval ModelHasBlock Player "ScreenEffectOverlay" == 0
 		return

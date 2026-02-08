@@ -10,6 +10,6 @@ begin Function {}
 		return
 	endif
 
-	AuxTimerStart "*PipScreen:Hit" 1 11
+	Goo1.AuxTimerStart "*PipScreen:Hit" 1 11
 
 end

@@ -13,7 +13,7 @@ Begin Function {sTimerName, iEffectState}
 
 	; Force full alpha
 	if eval iEffectState == 2
-		AuxTimerStop (sTimerName) 0
+		Goo1.AuxTimerStop (sTimerName) 0
 		Player.SetMatrPropVal (sTimerName) 7 1
 		sv_Destruct sTimerName
 		return
@@ -34,7 +34,7 @@ Begin Function {sTimerName, iEffectState}
 
 	; Start timer
 	fAlpha *= Goo1.AuxVarGetFlt (sTimerName) 5
-	AuxTimerStart (sTimerName) fAlpha 399
+	Goo1.AuxTimerStart (sTimerName) fAlpha 399
 
 	sv_Destruct sTimerName
 
