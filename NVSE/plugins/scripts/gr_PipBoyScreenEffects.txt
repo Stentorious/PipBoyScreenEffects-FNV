@@ -7,6 +7,9 @@ endif
 if eval IsFormValid (rPipBoy = EditorIDToFormID "PipBoy2000Mk6MC")
 	AttachModel rPipBoy 3 "glare|PipBoyScreenEffects\Default.nif"
 endif
+if eval IsFormValid (rPipBoy = EditorIDToFormID "LilPip3000")
+	AttachModel rPipBoy 3 "glare|PipBoyScreenEffects\Default.nif"
+endif
 if eval IsFormValid (rPipBoy = EditorIDToFormID "BIDEpipReadius")
 	AttachModel rPipBoy 3 "glare|PipBoyScreenEffects\2500.nif"
 endif
