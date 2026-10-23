@@ -18,20 +18,6 @@ if Goo1.AuxVarGetFlt "*PipScreen_Init" == 1
 endif
 Goo1.AuxVarSetFlt "*PipScreen_Init" 1
 
-; Check for requirements
-if GetNVSEVersionFull < 6.40
-	MessageBoxEx "Pip-Boy Screen Effects missing requirement!%rInstall xNVSE 6.4.0+."
-	return
-endif
-if GetPluginVersion "JohnnyGuitarNVSE" < 390
-	MessageBoxEx "Pip-Boy Screen Effects missing requirement!%rInstall latest JohnnyGuitar NVSE plugin."
-	return
-endif
-if GetPluginVersion "ShowOffNVSE Plugin" < 180
-	MessageBoxEx "Pip-Boy Screen Effects missing requirement!%rInstall latest ShowOff NVSE plugin."
-	return
-endif
-
 ; Load effects settings
 ; "*PipScreen_Effect"
 ; 0 : Enable
